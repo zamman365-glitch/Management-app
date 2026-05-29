@@ -8,11 +8,12 @@ class Bank:
     data=[]
 
 
-    with open(database) as fs:
-        data =json.loads(fs.read())
+    if Path(database).exists():
+        with open(database) as fs:
+            data =json.loads(fs.read())
     
 
-    @classmethod            # samjh nhi aaya 
+    @classmethod           
     def __update(cls):
         with open(cls.database,'w') as fs:
             fs.write(json.dumps(cls.data))
@@ -26,7 +27,7 @@ class Bank:
             "email":input("Tell user Email:-"),
             "AccountNo.":"123dxc34612",
             "pin":int(input("Tell user Pin:-")),
-            "balance":0
+            "balance":0 
         }
 
         if info['age']<12 or len(str(info["pin"])) !=4 :
