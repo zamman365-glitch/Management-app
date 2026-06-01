@@ -44,6 +44,18 @@ class Bank:
             Bank.data.append(info)
             bank.__update()
 
+    def deposite_money(self):
+        accno=input("Tell your account number :-")
+        pin=int(input("tell your pin:-"))
+        userdata=[i for i in Bank.data if i['AccountNo.']==accno and i['pin']==pin]
+
+        if userdata==False:
+            print("sorry no such user exist")
+        else:
+            amount=int(input("Money :-"))
+            userdata[0]['balance']+=amount  #copy by references agr isme change karnge to data mei change ho jayega 
+            bank.__update()
+            print("Balance added successfully")
     
 
 
@@ -62,7 +74,8 @@ if res==1:
     bank.create_user()
 
 elif res==2:
-    pass
+    bank.deposite_money()
+    
 
 elif res==3:
     pass
@@ -75,3 +88,4 @@ elif res==5:
 
 elif res==6:
     pass
+
