@@ -36,10 +36,9 @@ class Bank:
             "pin":int(input("Tell user Pin:-")),
             "balance":0 
         }
-
+        
         if info['age']<12 or len(str(info["pin"])) !=4 :
             print("sorry cannot create account")
-        
         else:
             Bank.data.append(info)
             bank.__update()
@@ -56,9 +55,27 @@ class Bank:
             userdata[0]['balance']+=amount  #copy by references agr isme change karnge to data mei change ho jayega 
             bank.__update()
             print("Balance added successfully")
+
+
+
+
+    def withdraw_money(self):
+        accno=input("Tell your account number :-")
+        pin=int(input("tell your pin:-"))
+        userdata=[i for i in Bank.data if i['AccountNo.']==accno and i['pin']==pin]
+
+        if userdata==False:
+            print("sorry no such user exist")
+        else:
+            amount=int(input("Money :-"))
+            if amount>userdata[0]['balance']:
+                print("insufficient balance")
+
+            userdata[0]['balance']-=amount  #copy by references agr isme change karnge to data mei change ho jayega 
+            bank.__update()
+            print("Balance withdraw successfully")
     
-
-
+    
 bank=Bank()   
 
 print("Press 1 for creating an account")
@@ -78,7 +95,7 @@ elif res==2:
     
 
 elif res==3:
-    pass
+    bank.withdraw_money()
 
 elif res==4:
     pass
