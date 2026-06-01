@@ -17,15 +17,22 @@ class Bank:
     def __update(cls):
         with open(cls.database,'w') as fs:
             fs.write(json.dumps(cls.data))
-
-
     
+    @classmethod
+    def __accountgenerate(cls):
+        alpha=random.choices(string.ascii_letters,k=8)
+        num=random.choices(string.digits,k=4)
+        acc=alpha+num
+        random.shuffle(acc)
+        return"".join(acc)
+
+
     def create_user(self):
         info={
             "name":input("Tell user Name:-"),
             "age":int(input("Tell user Age:-")),
             "email":input("Tell user Email:-"),
-            "AccountNo.":"123dxc34612",
+            "AccountNo.":Bank.__accountgenerate(),
             "pin":int(input("Tell user Pin:-")),
             "balance":0 
         }
