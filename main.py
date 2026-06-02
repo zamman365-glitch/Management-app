@@ -95,7 +95,7 @@ class Bank:
         if not userdata:
             print("No user found!")
         else:
-            print("you cannot change bankbalance,account number and age")
+            print("you cannot change bankbalance account number and age")
              
             newdata={
                 "name": input("Tell your new name or press enter to skip"),
@@ -115,35 +115,59 @@ class Bank:
                     userdata[0][i]=newdata[i]
                 if i =="pin":
                     userdata[0][i]=int(newdata[i])
-            Bank.__update
+            Bank.__update()
+
+    def delete_account():
+        accno=input("Tell your account number :-")
+        pin=int(input("tell your pin:-"))
+        userdata=[i for i in Bank.data if i['AccountNo.']==accno and i['pin']==pin]
+
+        if userdata==False:
+            print("No such user")
+        else:
+            print("Are you sure you want to delete")
+            check=input("Press y (YES) or n (NO)")
+            if check=="y":
+                index=Bank.data.index(userdata[0])
+                Bank.data.pop(index)
+                Bank.__update()
 
 bank=Bank()   
+while True:
+    print("Press 1 for creating an account")
+    print("Press 2 for depositing money")
+    print("Press 3 for withdrawing money")
+    print("Press 4 for details of a user")
+    print("Press 5 updating user details")
+    print("Press 6 for deleting account")
+    print("Press 0 for Exit")
 
-print("Press 1 for creating an account")
-print("Press 2 for depositing money")
-print("Press 3 for withdrawing money")
-print("Press 4 for details of a user")
-print("Press 5 updating user details")
-print("Press 6 for deleting user")
+    res=int(input("Tell your response:-"))
 
-res=int(input("Tell your response:-"))
+    if res==1:
+        bank.create_user()
 
-if res==1:
-    bank.create_user()
+    elif res==2:
+        bank.deposite_money()
 
-elif res==2:
-    bank.deposite_money()
+    elif res==3:
+        bank.withdraw_money()
+
+    elif res==4:
+        bank.show_details()
+
+    elif res==5:
+        bank.update_details()
+
+    elif res==6:
+        bank.delete_account()
+
+    elif res==0:
+        break
+
+    else:
+        print("invalid input try again")
+
     
 
-elif res==3:
-    bank.withdraw_money()
-
-elif res==4:
-    bank.show_details()
-
-elif res==5:
-    bank.update_details()
-
-elif res==6:
-    pass
 
