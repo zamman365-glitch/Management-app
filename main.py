@@ -74,8 +74,49 @@ class Bank:
             userdata[0]['balance']-=amount  #copy by references agr isme change karnge to data mei change ho jayega 
             bank.__update()
             print("Balance withdraw successfully")
+
+
+
+    def show_details():
+        accno=input("Tell your account number :-")
+        pin=int(input("tell your pin:-"))
+        userdata=[i for i in Bank.data if i['AccountNo.']==accno and i['pin']==pin]
+        if not userdata:
+            print("No data found!")
+        else:
+             for i in userdata[0]:
+                 print(f"{i} - {userdata[0][i]}")
+
     
-    
+    def update_details():
+        accno=input("Tell your account number :-")
+        pin=int(input("tell your pin:-"))
+        userdata=[i for i in Bank.data if i['AccountNo.']==accno and i['pin']==pin]
+        if not userdata:
+            print("No user found!")
+        else:
+            print("you cannot change bankbalance,account number and age")
+             
+            newdata={
+                "name": input("Tell your new name or press enter to skip"),
+                "email": input("Tell your new mail or press enter to skip"),
+                "pin": input("Tell your new pin or press enter to skip")    
+            }
+
+            if newdata['name']=="":
+                newdata['name']=userdata[0]['name']
+            if newdata['email']=="":
+                newdata['email']=userdata[0]['email']
+            if newdata['pin']=="":
+                newdata['pin']=userdata[0]['pin']
+            
+            for i in userdata[0]:
+                if i in newdata:
+                    userdata[0][i]=newdata[i]
+                if i =="pin":
+                    userdata[0][i]=int(newdata[i])
+            Bank.__update
+
 bank=Bank()   
 
 print("Press 1 for creating an account")
@@ -98,10 +139,10 @@ elif res==3:
     bank.withdraw_money()
 
 elif res==4:
-    pass
+    bank.show_details()
 
 elif res==5:
-    pass
+    bank.update_details()
 
 elif res==6:
     pass
