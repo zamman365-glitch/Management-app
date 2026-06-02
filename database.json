@@ -1,1 +1,34 @@
-[{"name": "zamman", "age": 20, "email": "@gmail.com", "AccountNo.": "123dxc34612", "pin": 1234, "balance": 0}, {"name": "Lulu", "age": 19, "email": "Lulu@gmail.com", "AccountNo.": "K01jvDDa3ge0", "pin": 7890, "balance": 498000}]
+[
+  {
+    "name": "zamman",
+    "age": 20,
+    "email": "@gmail.com",
+    "AccountNo.": "123dxc34612",
+    "pin": 1234,
+    "balance": 0
+  },
+  {
+    "name": "Lulu",
+    "age": 19,
+    "email": "Lulu@gmail.com",
+    "AccountNo.": "K01jvDDa3ge0",
+    "pin": 7890,
+    "balance": 498000
+  },
+  {
+    "name": "Mohammad Zamman",
+    "age": 20,
+    "email": "zamman@gmail.com",
+    "AccountNo.": "eqAVa1tK306o",
+    "pin": 7890,
+    "balance": 0
+  },
+  {
+    "name": "Mohammad Zamman",
+    "age": 20,
+    "email": "zamman@gmail.com",
+    "AccountNo.": "f5IgIKI1do70",
+    "pin": 7890,
+    "balance": 500000
+  }
+]
